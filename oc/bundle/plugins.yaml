@@ -1,0 +1,3 @@
+plugins:
+  - id: "cloudbees-casc-items-server"
+  - id: "cloudbees-casc-items-commons"

@@ -1,0 +1,4 @@
+jenkins:
+  systemMessage: "Operations center configured using CloudBees CasC"
+cloudBeesCasCServer:
+  visibility: true 
