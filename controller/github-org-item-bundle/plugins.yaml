@@ -3,5 +3,4 @@ plugins:
   - id: "cloudbees-casc-items-controller"
   - id: "cloudbees-casc-items-commons"
   - id: "cloudbees-hashicorp-vault"
-  - id: "cloudbees-hashicorp-vault"
   - id: "github-branch-source"

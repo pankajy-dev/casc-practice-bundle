@@ -1,5 +1,5 @@
 id: "pankaj-bundle"
-version: "5"
+version: "6"
 apiVersion: "2"
 description: "pankaj's-bundle"
 availabilityPattern: ".*"
@@ -8,4 +8,4 @@ jcasc:
 plugins:
   - "plugins.yaml"
 items:
-  - items.yaml
+  - "items.yaml"

@@ -7,4 +7,4 @@ jcasc:
 plugins:
   - "plugins.yaml"
 items:
-  - items.yaml
+  - "items.yaml"
