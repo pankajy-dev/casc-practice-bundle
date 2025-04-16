@@ -1,5 +1,5 @@
 id: "pankaj-bundle"
-version: "6"
+version: "8"
 apiVersion: "2"
 description: "pankaj's-bundle"
 availabilityPattern: ".*"
