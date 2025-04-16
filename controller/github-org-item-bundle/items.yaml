@@ -4,9 +4,9 @@ removeStrategy:
 
 items:
   - kind: "organizationFolder"
-    name: "project-alpha-github-org"
-    displayName: "Project Alpha GitHub Organization job"
-    description: "This is Project Alpha's Github Organization job!"
+    name: "pankaj-github-org"
+    displayName: "Pankaj GitHub Organization job"
+    description: "This is Project Pankaj's Github Organization job!"
     navigators:
       - github:
           traits:
