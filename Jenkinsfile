@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     stages {
-        stage('Print Directory Structure') {
+        stage('Print Directory Structure (excluding hidden folders)') {
             steps {
                 script {
-                    // Create a shell script to print the directory structure
                     sh '''
-                        echo "Workspace Directory Tree:"
+                        echo "Workspace Directory Tree (excluding hidden folders):"
+
                         print_tree() {
-                            find "$1" -print | sed -e "s;[^/]*/;|____;g;s;____|; |;g"
+                            find "$1" \\( -path "*/.*" -prune \\) -o -print | sed -e "s;[^/]*/;|____;g;s;____|; |;g"
                         }
 
                         print_tree "$(pwd)"
