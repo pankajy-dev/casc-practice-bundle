@@ -1,0 +1,81 @@
+removeStrategy:
+  items: "none"
+  rbac: "sync"
+
+items:
+  - kind: "organizationFolder"
+    name: "project-alpha-github-org"
+    displayName: "Project Alpha GitHub Organization job"
+    description: "This is Project Alpha's Github Organization job!"
+    navigators:
+      - github:
+          traits:
+            - checkoutOptionTrait:
+                extension:
+                  checkoutOption:
+                    timeout: 5
+            - cloneOptionTrait:
+                extension:
+                  cloneOption:
+                    reference: main
+                    noTags: false
+                    honorRefspec: false
+                    shallow: true
+                    timeout: 6
+          repoOwner: "pankajy-dev"
+    projectFactories:
+      - customMultiBranchProjectFactory:
+          factory:
+            customBranchProjectFactory:
+              marker: ""
+              definition:
+                cpsScmFlowDefinition:
+                  scriptPath: "Jenkinsfile"
+                  scm:
+                    gitSCM:
+                      extensions:
+                        - checkoutOption:
+                            timeout: 4
+                      gitTool: "git"
+                      userRemoteConfigs:
+                        - userRemoteConfig:
+                            name: "pankajy-dev"
+                            credentialsId: "pankajy-dev-gh-app"
+                            url: "git@github.com:pankajy-dev/casc-practice-bundle.git"
+                      browser:
+                        githubWeb:
+                          repoUrl: "git@github.com:pankajy-dev/casc-practice-bundle"
+                      branches:
+                        - branchSpec:
+                            name: "*/main"
+                  lightweight: false
+    properties:
+      - organizationChildHealthMetricsProperty:
+          templates:
+            - worstChildHealthMetric:
+                recursive: true
+            - averageChildHealthMetric: { }
+            - jobStatusHealthMetric:
+                unstable: true
+                countVirginJobs: false
+                failure: true
+                success: true
+                unbuilt: true
+            - projectEnabledHealthMetric: { }
+      - organizationChildOrphanedItemsProperty:
+          strategy:
+            inherit: { }
+      - organizationChildTriggersProperty:
+          templates:
+            - periodicFolderTrigger:
+                interval: 1d
+      - envVars: { }
+      - suppressFolderAutomaticTriggering:
+          strategy: NONE
+          branches: .*
+      - vaultAuthenticationsFolderProperty: { }
+    strategy:
+      allBranchesSame: { }
+    trigger:
+      periodicFolderTrigger:
+        interval: 1d

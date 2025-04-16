@@ -1,0 +1,5 @@
+jenkins:
+  systemMessage: "Client controller configured using CloudBees CasC"
+unclassified:
+  location:
+    url: "http://192.168.0.107:9090/"

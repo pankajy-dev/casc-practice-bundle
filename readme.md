@@ -1,0 +1,1 @@
+curl --user "admin:1181430716ee5199586eb14b6390eb0947" -XPOST "http://localhost:8080/casc-items/create-items" --data-binary @items_good.yaml -H "Content-Type:text/yaml"
