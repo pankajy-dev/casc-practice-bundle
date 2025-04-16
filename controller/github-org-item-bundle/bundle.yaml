@@ -2,6 +2,7 @@ id: "pankaj-bundle"
 version: "5"
 apiVersion: "2"
 description: "pankaj's-bundle"
+availabilityPattern: ".*"
 jcasc:
   - "jenkins.yaml"
 plugins:
