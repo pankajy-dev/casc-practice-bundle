@@ -52,7 +52,38 @@ items:
       - suppressFolderAutomaticTriggering:
           strategy: NONE
           branches: .*
-      - vaultAuthenticationsFolderProperty: {}
+      - vaultAuthenticationsFolderProperty:
+          credentials:
+            - vaultUsernamePassword:
+                usernameKey: user
+                vaultSecretEngine:
+                  genericKV2SecretEngine:
+                    path: jenkins/secrets
+                    authenticationId: folder-auth-id-2
+                scope: GLOBAL
+                description: test vault username password
+                id: test-username-password-id
+                passwordKey: password
+            - vaultSecretText:
+                secretKey: token
+                vaultSecretEngine:
+                  genericKV1SecretEngine:
+                    path: jenkinsV1/secrets
+                    authenticationId: folder-auth-id
+                scope: GLOBAL
+                description: test vault secret text
+                id: test-secret-text-id
+          authentications:
+            - appRoleAuthentication:
+                roleId: 8e6f8a38-2171-5ef4-a503-e7dff83155f5
+                namespace: admin
+                secretId: '74f11516-0f0c-863f-4124-30fa77535a02'
+                id: folder-auth-id
+            - appRoleAuthentication:
+                roleId: 8e6f8a38-2171-5ef4-a503-e7dff83155f5
+                namespace: admin-2
+                secretId: '74f11516-0f0c-863f-4124-30fa77535a02'
+                id: folder-auth-id-2
     strategy:
       allBranchesSame: {}
     trigger:
