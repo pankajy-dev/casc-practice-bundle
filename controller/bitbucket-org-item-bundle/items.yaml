@@ -3,22 +3,22 @@ removeStrategy:
   items: NONE
 items:
   - kind: organizationFolder
-name: bitbucket-org
-displayName: bitbucket-org
-navigators:
-  - bitbucket:
-      traits:
-        - bitbucketBranchDiscovery:
-            strategyId: 1
-        - bitbucketPullRequestDiscovery:
-            strategyId: 1
-        - bitbucketForkDiscovery:
-            trust:
-              bitbucketTrustTeam: {
-              }
-            strategyId: 1
-      repoOwner: ''
-      serverUrl: https://bitbucket.org
+    name: bitbucket-org
+    displayName: bitbucket-org
+    navigators:
+      - bitbucket:
+          traits:
+            - bitbucketBranchDiscovery:
+                strategyId: 1
+            - bitbucketPullRequestDiscovery:
+                strategyId: 1
+            - bitbucketForkDiscovery:
+                trust:
+                  bitbucketTrustTeam: {
+                  }
+                strategyId: 1
+          repoOwner: ''
+          serverUrl: https://bitbucket.org
 orphanedItemStrategy:
   defaultOrphanedItemStrategy:
     pruneDeadBranches: true
