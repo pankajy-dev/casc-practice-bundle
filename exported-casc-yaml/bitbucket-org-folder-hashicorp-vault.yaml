@@ -1,0 +1,66 @@
+removeStrategy:
+  rbac: SYNC
+  items: NONE
+items:
+  - kind: organizationFolder
+    name: bitbucket-org
+    displayName: bitbucket-org
+    navigators:
+      - bitbucket:
+          traits:
+            - bitbucketBranchDiscovery:
+                strategyId: 1
+            - bitbucketPullRequestDiscovery:
+                strategyId: 1
+            - bitbucketForkDiscovery:
+                trust:
+                  bitbucketTrustTeam: {
+                  }
+                strategyId: 1
+          repoOwner: ''
+          serverUrl: https://bitbucket.org
+    orphanedItemStrategy:
+      defaultOrphanedItemStrategy:
+        pruneDeadBranches: true
+        daysToKeep: -1
+        numToKeep: -1
+        abortBuilds: false
+    projectFactories:
+      - workflowMultiBranchProjectFactory:
+          scriptPath: Jenkinsfile
+    properties:
+      - organizationChildHealthMetricsProperty:
+          templates:
+            - worstChildHealthMetric:
+                recursive: true
+            - averageChildHealthMetric: {
+            }
+            - jobStatusHealthMetric:
+                unstable: false
+                countVirginJobs: false
+                failure: true
+                success: true
+                unbuilt: true
+            - projectEnabledHealthMetric: {
+            }
+      - organizationChildOrphanedItemsProperty:
+          strategy:
+            inherit: {
+            }
+      - organizationChildTriggersProperty:
+          templates:
+            - periodicFolderTrigger:
+                interval: 1d
+      - envVars: {
+      }
+      - suppressFolderAutomaticTriggering:
+          strategy: NONE
+          branches: .*
+      - vaultAuthenticationsFolderProperty: {
+      }
+    strategy:
+      allBranchesSame: {
+      }
+    trigger:
+      periodicFolderTrigger:
+        interval: 1d
