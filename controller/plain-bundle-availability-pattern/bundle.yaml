@@ -1,0 +1,11 @@
+id: "pankaj-bundle"
+version: "5"
+apiVersion: "2"
+description: "pankaj's-bundle"
+availabilityPattern: "cm"
+jcasc:
+  - "jenkins.yaml"
+plugins:
+  - "plugins.yaml"
+items:
+  - "items.yaml"
